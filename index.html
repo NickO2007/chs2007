@@ -4,109 +4,362 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Canterbury HS Class of 2007 — 20-Year Reunion</title>
-  <meta name="description" content="Canterbury High School (Ottawa) Class of 2007 — 20-Year Reunion info and RSVP." />
+  <meta name="description" content="Canterbury High School (Ottawa) Class of 2007 — 20-Year Reunion. RSVP, details, tickets, and updates." />
+
   <style>
-    :root { --bg:#0b1220; --card:#111a2e; --text:#eaf0ff; --muted:#b7c2e2; --accent:#7aa2ff; }
-    *{box-sizing:border-box} body{margin:0;font-family:ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;background:linear-gradient(180deg,#070b14,var(--bg));color:var(--text)}
-    a{color:inherit}
-    .wrap{max-width:900px;margin:0 auto;padding:24px}
-    header{padding:48px 0 16px}
-    .badge{display:inline-block;padding:6px 10px;border:1px solid rgba(255,255,255,.18);border-radius:999px;color:var(--muted);font-size:14px}
-    h1{font-size:40px;line-height:1.1;margin:14px 0 10px}
-    .sub{color:var(--muted);font-size:18px;max-width:60ch}
-    .cta{display:flex;gap:12px;flex-wrap:wrap;margin:22px 0 10px}
-    .btn{display:inline-block;padding:12px 16px;border-radius:12px;text-decoration:none;font-weight:650}
-    .btn.primary{background:var(--accent);color:#081022}
-    .btn.ghost{border:1px solid rgba(255,255,255,.18);color:var(--text)}
-    .grid{display:grid;gap:16px;grid-template-columns:repeat(12,1fr);margin:18px 0 40px}
-    .card{grid-column:span 12;background:rgba(17,26,46,.85);border:1px solid rgba(255,255,255,.12);border-radius:18px;padding:18px}
-    @media (min-width: 720px){
-      .card.half{grid-column:span 6}
-      .card.third{grid-column:span 4}
+    :root{
+      --bg: #0b1220;
+      --panel: rgba(255,255,255,.06);
+      --panel-2: rgba(255,255,255,.085);
+      --text: #eef3ff;
+      --muted: rgba(238,243,255,.72);
+      --line: rgba(255,255,255,.12);
+      --accent: #7aa2ff;
+      --accent-2: #9df0ff;
+      --shadow: 0 20px 60px rgba(0,0,0,.45);
+      --radius: 20px;
+      --radius-sm: 14px;
+      --max: 1050px;
     }
-    h2{margin:0 0 10px;font-size:22px}
-    ul{margin:10px 0 0;padding-left:18px;color:var(--muted)}
-    .muted{color:var(--muted)}
-    .line{height:1px;background:rgba(255,255,255,.10);margin:14px 0}
-    footer{padding:24px 0;color:var(--muted);font-size:14px}
-    code{background:rgba(255,255,255,.08);padding:2px 6px;border-radius:6px}
+
+    *{ box-sizing: border-box; }
+    html{ scroll-behavior: smooth; }
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      background:
+        radial-gradient(1200px 500px at 20% -10%, rgba(122,162,255,.25), transparent 60%),
+        radial-gradient(1000px 450px at 80% 0%, rgba(157,240,255,.16), transparent 55%),
+        linear-gradient(180deg, #070b14, var(--bg));
+      color: var(--text);
+      overflow-x:hidden;
+    }
+
+    a{ color: inherit; }
+    .container{ max-width: var(--max); margin:0 auto; padding: 0 20px; }
+
+    /* Top nav */
+    .nav-wrap{
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(11,18,32,.58);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(255,255,255,.08);
+    }
+    .nav{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      padding: 12px 0;
+      gap: 12px;
+    }
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      min-width: 0;
+      text-decoration:none;
+    }
+    .dot{
+      width: 12px;
+      height: 12px;
+      border-radius: 99px;
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      box-shadow: 0 0 0 6px rgba(122,162,255,.12);
+      flex: 0 0 auto;
+    }
+    .brand-title{
+      font-weight: 750;
+      letter-spacing: .2px;
+      white-space: nowrap;
+      overflow:hidden;
+      text-overflow: ellipsis;
+    }
+    .nav-links{
+      display:flex;
+      gap: 14px;
+      align-items:center;
+      flex-wrap: wrap;
+      justify-content:flex-end;
+    }
+    .nav-links a{
+      text-decoration:none;
+      color: var(--muted);
+      padding: 8px 10px;
+      border-radius: 10px;
+      border: 1px solid transparent;
+    }
+    .nav-links a:hover{
+      color: var(--text);
+      border-color: rgba(255,255,255,.12);
+      background: rgba(255,255,255,.04);
+    }
+
+    /* Buttons */
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
+      padding: 12px 14px;
+      border-radius: 14px;
+      text-decoration:none;
+      border: 1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.04);
+      color: var(--text);
+      font-weight: 650;
+      transition: transform .08s ease, background .2s ease, border-color .2s ease;
+      cursor:pointer;
+      white-space: nowrap;
+    }
+    .btn:hover{ transform: translateY(-1px); border-color: rgba(255,255,255,.22); background: rgba(255,255,255,.06); }
+    .btn.primary{
+      border: 1px solid rgba(122,162,255,.35);
+      background: linear-gradient(135deg, rgba(122,162,255,.95), rgba(157,240,255,.85));
+      color: #061022;
+    }
+    .btn.primary:hover{ transform: translateY(-1px); }
+
+    /* Hero */
+    .hero{
+      padding: 28px 0 10px;
+    }
+    .hero-grid{
+      display:grid;
+      gap: 18px;
+      grid-template-columns: 1fr;
+      align-items: stretch;
+    }
+    @media (min-width: 900px){
+      .hero-grid{ grid-template-columns: 1.25fr .75fr; }
+    }
+
+    .hero-card{
+      border-radius: var(--radius);
+      overflow:hidden;
+      border: 1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.04);
+      box-shadow: var(--shadow);
+      position: relative;
+    }
+
+    /* IMPORTANT:
+       Put your photo in the repo named "canterbury.jpg"
+       If you keep a different filename, change it below. */
+    .hero-photo{
+      width:100%;
+      height: clamp(220px, 34vw, 420px);
+      object-fit: cover;
+      display:block;
+      filter: saturate(1.05) contrast(1.05);
+    }
+    .hero-overlay{
+      position:absolute;
+      inset:0;
+      background: linear-gradient(90deg, rgba(7,11,20,.78) 0%, rgba(7,11,20,.25) 55%, rgba(7,11,20,.18) 100%),
+                  linear-gradient(180deg, rgba(7,11,20,.15) 0%, rgba(7,11,20,.6) 100%);
+      pointer-events:none;
+    }
+    .hero-content{
+      position:absolute;
+      inset:0;
+      padding: 22px;
+      display:flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      gap: 10px;
+    }
+    .pill-row{
+      display:flex;
+      flex-wrap:wrap;
+      gap: 8px;
+    }
+    .pill{
+      display:inline-flex;
+      gap:8px;
+      align-items:center;
+      padding: 7px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.05);
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1;
+    }
+
+    .title{
+      margin:0;
+      font-size: clamp(28px, 3.2vw, 42px);
+      line-height: 1.1;
+      letter-spacing: .2px;
+    }
+    .subtitle{
+      margin:0;
+      color: var(--muted);
+      font-size: 16px;
+      max-width: 60ch;
+    }
+
+    .side-card{
+      border-radius: var(--radius);
+      border: 1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.04);
+      box-shadow: var(--shadow);
+      padding: 18px;
+      display:flex;
+      flex-direction:column;
+      gap: 14px;
+    }
+
+    .kpis{
+      display:grid;
+      gap: 10px;
+      grid-template-columns: 1fr 1fr;
+    }
+    .kpi{
+      border-radius: 16px;
+      border: 1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.05);
+      padding: 12px;
+    }
+    .kpi .label{ color: var(--muted); font-size: 12px; margin-bottom: 6px; }
+    .kpi .value{ font-weight: 750; font-size: 16px; }
+
+    .cta-row{
+      display:flex;
+      flex-wrap:wrap;
+      gap: 10px;
+      margin-top: 2px;
+    }
+
+    /* Sections */
+    section{ padding: 34px 0; }
+    .section-head{
+      display:flex;
+      align-items:flex-end;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 14px;
+    }
+    h2{
+      margin:0;
+      font-size: 22px;
+      letter-spacing: .2px;
+    }
+    .section-desc{
+      margin:0;
+      color: var(--muted);
+      max-width: 70ch;
+    }
+
+    .grid{
+      display:grid;
+      grid-template-columns: 1fr;
+      gap: 14px;
+    }
+    @media (min-width: 760px){
+      .grid{ grid-template-columns: repeat(12, 1fr); }
+      .span-4{ grid-column: span 4; }
+      .span-6{ grid-column: span 6; }
+      .span-8{ grid-column: span 8; }
+      .span-12{ grid-column: span 12; }
+    }
+
+    .card{
+      border-radius: var(--radius);
+      border: 1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.04);
+      box-shadow: 0 14px 40px rgba(0,0,0,.25);
+      padding: 16px;
+    }
+    .card h3{
+      margin: 0 0 8px;
+      font-size: 16px;
+      letter-spacing:.2px;
+    }
+    .card p{
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.55;
+    }
+
+    .list{ margin: 10px 0 0; padding-left: 18px; color: var(--muted); }
+    .list li{ margin: 6px 0; }
+
+    .divider{
+      height: 1px;
+      background: rgba(255,255,255,.10);
+      margin: 14px 0;
+    }
+
+    /* FAQ accordion */
+    details{
+      border: 1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.04);
+      border-radius: 16px;
+      padding: 12px 14px;
+    }
+    details + details{ margin-top: 10px; }
+    summary{
+      cursor: pointer;
+      font-weight: 650;
+      color: var(--text);
+      list-style: none;
+    }
+    summary::-webkit-details-marker{ display:none; }
+    details p{ margin-top: 10px; color: var(--muted); }
+
+    /* Footer */
+    footer{
+      padding: 26px 0 38px;
+      color: var(--muted);
+      border-top: 1px solid rgba(255,255,255,.10);
+      margin-top: 20px;
+    }
+    .foot-row{
+      display:flex;
+      flex-wrap:wrap;
+      gap: 10px 16px;
+      align-items:center;
+      justify-content: space-between;
+    }
+    .small{ font-size: 13px; }
+    .mono{ font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace; }
+
+    /* Small screens: hide some nav links if needed */
+    @media (max-width: 520px){
+      .nav-links .hide-sm{ display:none; }
+    }
   </style>
 </head>
+
 <body>
-  <div class="wrap">
-    <header>
-      <span class="badge">Ottawa • Canterbury High School • Class of 2007</span>
-      <h1>20-Year Reunion</h1>
-      <p class="sub">
-        Help us reconnect and plan the event. RSVP takes 30 seconds — even if you’re a “maybe.”
-      </p>
+  <!-- NAV -->
+  <div class="nav-wrap">
+    <div class="container">
+      <div class="nav">
+        <a class="brand" href="#top">
+          <span class="dot" aria-hidden="true"></span>
+          <span class="brand-title">Canterbury HS • Class of 2007</span>
+        </a>
 
-      <div class="cta">
-        <!-- Replace the # with your Google Form link -->
-        <a class="btn primary" href="https://docs.google.com/forms/d/e/1FAIpQLScNHYDzqfNf3I0qmkKrT9rQmZk1s9fyksxQYRazBmEnHsuISQ/viewform?usp=dialog" target="_blank" rel="noopener">RSVP / Get Updates</a>
-        <a class="btn ghost" href="#details">Event Details</a>
-        <a class="btn ghost" href="#faq">FAQ</a>
+        <div class="nav-links">
+          <a class="hide-sm" href="#plan">Plan</a>
+          <a class="hide-sm" href="#tickets">Tickets</a>
+          <a class="hide-sm" href="#updates">Updates</a>
+          <a href="#faq">FAQ</a>
+          <a class="btn primary" href="PASTE_RSVP_LINK_HERE" target="_blank" rel="noopener">RSVP</a>
+        </div>
       </div>
-
-      <p class="muted"><strong>Date:</strong> TBD • <strong>Location:</strong> Ottawa (venue TBD)</p>
-    </header>
-
-    <section class="grid" id="details">
-      <div class="card half">
-        <h2>What’s happening</h2>
-        <p class="muted">
-          We’re planning a Class of 2007 reunion in Ottawa. Exact date/venue will be finalized once we know headcount.
-        </p>
-        <div class="line"></div>
-        <ul>
-          <li>Likely format: evening social + optional daytime meetup</li>
-          <li>Bring a guest: yes (tell us in RSVP)</li>
-          <li>Dietary needs: collected via RSVP</li>
-        </ul>
-      </div>
-
-      <div class="card half">
-        <h2>Stay in the loop</h2>
-        <p class="muted">
-          RSVP (or just join the list) so we can send updates and voting links (date, venue, etc.).
-        </p>
-        <div class="line"></div>
-        <p class="muted">
-          Questions? Email the organizers:
-          <br />
-          <a href="mailto:yourreunionemail@gmail.com">yourreunionemail@gmail.com</a>
-        </p>
-      </div>
-
-      <div class="card third">
-        <h2>Price</h2>
-        <p class="muted">TBD (depends on venue/catering).</p>
-      </div>
-      <div class="card third">
-        <h2>Dress code</h2>
-        <p class="muted">Casual / smart-casual (TBD).</p>
-      </div>
-      <div class="card third">
-        <h2>Privacy</h2>
-        <p class="muted">
-          Your info is used only for reunion planning + updates. No public attendee list unless you opt in.
-        </p>
-      </div>
-
-      <div class="card" id="faq">
-        <h2>FAQ</h2>
-        <ul>
-          <li><strong>I’m not sure I can attend.</strong> RSVP “Maybe” — it still helps planning.</li>
-          <li><strong>I lost touch.</strong> Share this link with anyone from our class.</li>
-          <li><strong>Can I help?</strong> Yes — email us and we’ll loop you in.</li>
-        </ul>
-      </div>
-    </section>
-
-    <footer>
-      <div>© Canterbury HS Class of 2007 Reunion • Built as a simple static site</div>
-      <div class="muted">Tip: to edit text later, change this <code>index.html</code> file and save.</div>
-    </footer>
+    </div>
   </div>
-</body>
-</html>
+
+  <!-- HERO -->
+  <div id="top" class="hero">
+    <div class="container">
+      <div class="hero-grid">
+
+        <div class="hero-card">
+          <img class="hero-photo" src="canterbury.jpg" alt="Canterbury High School exterior" />
+          <div class="hero-overlay" aria-hidden="true"></div>
